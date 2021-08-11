@@ -10,11 +10,29 @@ func _() {
 	var x [1]struct{}
 	_ = x[Error-0]
 	_ = x[EOF-1]
+	_ = x[Text-2]
+	_ = x[String-3]
+	_ = x[Plus-4]
+	_ = x[Minus-5]
+	_ = x[Wildcard-6]
+	_ = x[Not-7]
+	_ = x[Eq-8]
+	_ = x[Neq-9]
+	_ = x[Gt-10]
+	_ = x[Ge-11]
+	_ = x[Lt-12]
+	_ = x[Le-13]
+	_ = x[And-14]
+	_ = x[Or-15]
+	_ = x[Comma-16]
+	_ = x[Colon-17]
+	_ = x[LParen-18]
+	_ = x[RParen-19]
 }
 
-const _TokenType_name = "ErrorEOF"
+const _TokenType_name = "ErrorEOFTextStringPlusMinusWildcardNotEqNeqGtGeLtLeAndOrCommaColonLParenRParen"
 
-var _TokenType_index = [...]uint8{0, 5, 8}
+var _TokenType_index = [...]uint8{0, 5, 8, 12, 18, 22, 27, 35, 38, 40, 43, 45, 47, 49, 51, 54, 56, 61, 66, 72, 78}
 
 func (i TokenType) String() string {
 	if i >= TokenType(len(_TokenType_index)-1) {
