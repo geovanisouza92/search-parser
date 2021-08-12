@@ -7,20 +7,20 @@ import (
 	"github.com/geovanisouza92/search-parser/token"
 )
 
-type lexer struct {
+type Lexer struct {
 	s scanner.Scanner
 	r rune
 }
 
-func New(r io.Reader) *lexer {
+func New(r io.Reader) *Lexer {
 	var s scanner.Scanner
 	s.Init(r)
-	l := &lexer{s: s}
+	l := &Lexer{s: s}
 	l.readRune()
 	return l
 }
 
-func (l *lexer) Next() token.Token {
+func (l *Lexer) Next() token.Token {
 	var t token.Token
 
 	switch l.r {
@@ -67,16 +67,16 @@ func (l *lexer) Next() token.Token {
 	return t
 }
 
-func (l *lexer) readRune() {
+func (l *Lexer) readRune() {
 	l.r = l.s.Scan()
 }
 
-func (l *lexer) token(ty token.TokenType) token.Token {
+func (l *Lexer) token(ty token.TokenType) token.Token {
 	lit := l.s.TokenText()
 	return token.Token{Type: ty, Literal: lit}
 }
 
-func (l *lexer) choose(lookAhead rune, left, right token.TokenType) token.Token {
+func (l *Lexer) choose(lookAhead rune, left, right token.TokenType) token.Token {
 	lit := l.s.TokenText()
 	if l.s.Peek() == lookAhead {
 		l.readRune()
